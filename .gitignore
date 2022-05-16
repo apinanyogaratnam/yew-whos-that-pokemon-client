@@ -2,3 +2,8 @@
 .env.local
 *.env
 .env.production
+
+
+# Added by cargo
+
+/target

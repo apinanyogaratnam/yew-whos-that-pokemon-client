@@ -437,5 +437,6 @@ dependencies = [
 name = "yew-whos-that-pokemon-client"
 version = "0.1.0"
 dependencies = [
+ "web-sys",
  "yew",
 ]

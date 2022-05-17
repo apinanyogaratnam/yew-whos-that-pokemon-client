@@ -6,7 +6,7 @@ fn main() {
     yew::start_app::<Root>();
 }
 
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Debug, Clone)]
 struct Pokemon {
     id: usize,
     name: String,
@@ -17,6 +17,7 @@ struct Pokemon {
 fn root() -> Html {
     let pokemon_state = use_state_eq::<Option<Pokemon>, _>(|| None);
     web_sys::console::log_1(&format!("{:?}", pokemon_state).into());
+    let pokemon_state_outer = pokemon_state.clone();
 
     let onclick = Callback::from(move |mouse_event: MouseEvent| {
         web_sys::console::log_1(&mouse_event);
@@ -48,6 +49,19 @@ fn root() -> Html {
     html! {
         <div>
             <button {onclick}>{"get pokemon"}</button>
+            <ViewPokemon pokemon={(*pokemon_state_outer).clone()} />
         </div>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+struct ViewPokemonProps {
+    pokemon: Option<Pokemon>,
+}
+
+#[function_component(ViewPokemon)]
+fn view_pokemon(props: &ViewPokemonProps) -> Html {
+    html! {
+
     }
 }

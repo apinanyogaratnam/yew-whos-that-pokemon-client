@@ -6,8 +6,17 @@ fn main() {
     yew::start_app::<Root>();
 }
 
+#[derive(PartialEq)]
+struct Pokemon {
+    id: usize,
+    name: String,
+    image_src: String,
+}
+
 #[function_component(Root)]
 fn root() -> Html {
+    let pokemon_state = use_state_eq::<Option<Pokemon>, _>(|| None);
+
     let onclick = Callback::from(|mouse_event: MouseEvent| {
         web_sys::console::log_1(&mouse_event);
 

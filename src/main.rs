@@ -8,7 +8,7 @@ fn main() {
 fn root() -> Html {
     html! {
         <div>
-            <h1>{"Hello, world!"}</h1>
+            <button>{"get pokemon"}</button>
         </div>
     }
 }

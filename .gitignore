@@ -2,8 +2,7 @@
 .env.local
 *.env
 .env.production
-
+dist
 
 # Added by cargo
-
 /target

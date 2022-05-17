@@ -61,7 +61,14 @@ struct ViewPokemonProps {
 
 #[function_component(ViewPokemon)]
 fn view_pokemon(props: &ViewPokemonProps) -> Html {
-    html! {
+    let pokemon = match &props.pokemon {
+        Some(p) => p,
+        None => return html!{},
+    };
 
+    html! {
+        <div>
+            <img src={pokemon.image_src.clone()} />
+        </div>
     }
 }

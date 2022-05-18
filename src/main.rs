@@ -1,3 +1,4 @@
+use rand::Rng;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 use reqwest;
@@ -9,7 +10,7 @@ fn main() {
 
 #[derive(PartialEq, Debug, Clone)]
 struct Pokemon {
-    id: usize,
+    id: i32,
     name: String,
     image_src: String,
 }
@@ -26,7 +27,11 @@ fn root() -> Html {
         let pokemon_state = pokemon_state.clone();
 
         wasm_bindgen_futures::spawn_local(async move {
-            let response = reqwest::get("https://pokeapi.co/api/v2/pokemon/22")
+            let mut rng = rand::thread_rng();
+            let id: i32 = rng.gen_range(1..=100);
+
+
+            let response = reqwest::get(format!("https://pokeapi.co/api/v2/pokemon/{id}"))
                 .await
                 .unwrap();
 
@@ -37,7 +42,7 @@ fn root() -> Html {
             let image_src = v["sprites"]["front_default"].as_str().unwrap();
 
             let pokemon = Pokemon {
-                id: 22,
+                id,
                 name: name.to_string(),
                 image_src: image_src.to_string(),
             };

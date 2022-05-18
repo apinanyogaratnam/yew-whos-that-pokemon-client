@@ -6,7 +6,7 @@ build:
   docker build -t ${IMAGE} .
 
 run:
-  docker run -d -p 8000:8000 ${IMAGE}
+  docker run -d -p 8080:8080 ${IMAGE}
 
 exec:
 	docker exec -it $(sha) /bin/sh

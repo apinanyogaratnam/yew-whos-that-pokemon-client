@@ -1,3 +1,4 @@
+use web_sys::HtmlInputElement;
 use yew::prelude::*;
 use reqwest;
 use serde_json::Value;
@@ -59,6 +60,12 @@ struct ViewPokemonProps {
     pokemon: Option<Pokemon>,
 }
 
+#[derive(PartialEq, Debug, Clone)]
+enum Guess {
+    Correct,
+    Incorrect,
+}
+
 #[function_component(ViewPokemon)]
 fn view_pokemon(props: &ViewPokemonProps) -> Html {
     let pokemon = match &props.pokemon {
@@ -66,9 +73,31 @@ fn view_pokemon(props: &ViewPokemonProps) -> Html {
         None => return html!{},
     };
 
+    let guess_state = use_state_eq::<Option<Guess>, _>(|| None);
+    let guess_state_outer = guess_state.clone();
+
+    let name = pokemon.name.clone();
+    let input_ref = NodeRef::default();
+    let input_ref_outer = input_ref.clone();
+    let onclick = Callback::from(move |_| {
+        let input: HtmlInputElement = input_ref.cast::<HtmlInputElement>().unwrap();
+        let guess = input.value().to_lowercase();
+
+        if guess == name {
+            guess_state.set(Some(Guess::Correct));
+        } else {
+            guess_state.set(Some(Guess::Incorrect));
+        }
+
+        web_sys::console::log_1(&guess.into());
+    });
+
     html! {
         <div>
             <img src={pokemon.image_src.clone()} />
+            <input ref={input_ref_outer.clone()} type="text" />
+            <button {onclick}>{"submit"}</button>
+            { format!("{:?}", guess_state_outer) }
         </div>
     }
 }

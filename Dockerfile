@@ -6,4 +6,4 @@ RUN rustup target add wasm32-unknown-unknown
 RUN cargo install --locked trunk
 RUN trunk build --release
 
-CMD ["cargo", "run"]
+CMD ["trunk", "serve"]

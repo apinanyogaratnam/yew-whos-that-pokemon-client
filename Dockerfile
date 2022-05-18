@@ -1,4 +1,4 @@
-FROM rust:1.59-alpine
+FROM rust:1.60.0-slim-buster
 
 COPY . .
 

@@ -97,7 +97,25 @@ fn view_pokemon(props: &ViewPokemonProps) -> Html {
             <img src={pokemon.image_src.clone()} />
             <input ref={input_ref_outer.clone()} type="text" />
             <button {onclick}>{"submit"}</button>
-            { format!("{:?}", guess_state_outer) }
+            <ViewGuess guess={(*guess_state_outer).clone()} />
         </div>
+    }
+}
+
+#[derive(Properties, PartialEq)]
+struct ViewGuessProps {
+    guess: Option<Guess>,
+}
+
+#[function_component(ViewGuess)]
+fn view_guess(props: &ViewGuessProps) -> Html {
+    let text = match &props.guess {
+        None => return html!{},
+        Some(Guess::Correct) => "Yes! You did it!",
+        Some(Guess::Incorrect) => "No, that's wrong :(",
+    };
+
+    html! {
+        <div>{ text }</div>
     }
 }

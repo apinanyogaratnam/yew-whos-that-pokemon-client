@@ -1,4 +1,4 @@
-IMAGE := base-repository-template
+IMAGE := yew-whos-that-pokemon-client
 VERSION := 0.0.1
 REGISTRY_URL := ghcr.io/apinanyogaratnam/${IMAGE}:${VERSION}
 

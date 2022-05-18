@@ -3,10 +3,10 @@ VERSION := 0.0.1
 REGISTRY_URL := ghcr.io/apinanyogaratnam/${IMAGE}:${VERSION}
 
 build:
-  docker build -t ${IMAGE} .
+	docker build -t ${IMAGE} .
 
 run:
-  docker run -d -p 8080:8080 ${IMAGE}
+	docker run -d -p 8080:8080 ${IMAGE}
 
 exec:
 	docker exec -it $(sha) /bin/sh

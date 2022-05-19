@@ -10,4 +10,4 @@ RUN trunk build --release
 
 EXPOSE 8080
 
-CMD ["trunk", "serve", "--release"]
+CMD ["trunk", "serve", "--release", "--address", "0.0.0.0"]

@@ -9,4 +9,4 @@ RUN trunk build --release
 
 WORKDIR /dist
 
-CMD ["trunk", "serve"]
+CMD ["trunk", "serve", "--release"]

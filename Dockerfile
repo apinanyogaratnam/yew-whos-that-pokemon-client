@@ -4,7 +4,6 @@ COPY . .
 
 RUN rustup target add wasm32-unknown-unknown
 RUN cargo install --locked --version 0.15.0 trunk
-RUN cargo build --release
 RUN trunk build --release
 
 WORKDIR /dist

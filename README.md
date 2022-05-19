@@ -1,7 +1,7 @@
-# README Boilerplate
+# Yew who's that pokemon client
 
-A template of README best practices to make your README simple to understand and easy to use. 
-
+A web application to guess who's what pokemon built using rust and yew.
+<!-- 
 ## Table of Contents
 
 - [Installation](#installation)
@@ -39,4 +39,4 @@ Please [open an issue](https://github.com/fraction/readme-boilerplate/issues/new
 
 ## Contributing
 
-Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/). -->
